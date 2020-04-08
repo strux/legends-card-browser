@@ -4,10 +4,12 @@ import useCardAPI from './hooks/useCardAPI';
 
 function App() {
   const [query, setQuery] = useState('');
-  const { cards } = useCardAPI(query);
+  const [page, setPage] = useState(1);
+  const { cards } = useCardAPI(query, page);
 
   const updateQuery = (e) => {
     setQuery(e.target.value);
+    setPage(1);
   };
 
   return (
