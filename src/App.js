@@ -7,8 +7,7 @@ function App() {
       <header className="header">
         <input type="text" className="search-field" />
       </header>
-      <main>
-      </main>
+      <main />
     </div>
   );
 }
