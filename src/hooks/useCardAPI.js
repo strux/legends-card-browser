@@ -7,6 +7,12 @@ export default function useCardAPI(name = '', page = 1, pageSize = 20) {
   const [error, setError] = useState();
   let cancel;
 
+  // If the card name changes, we need to clear the card set.
+  // Hence, this effect only depends on name.
+  useEffect(() => {
+    setCards([]);
+  }, [name]);
+
   useEffect(() => {
     setLoading(true);
     axios.get('https://api.elderscrollslegends.io/v1/cards', {
@@ -15,17 +21,20 @@ export default function useCardAPI(name = '', page = 1, pageSize = 20) {
     })
       .then((res) => {
         setLoading(false);
-        setCards(res.data.cards);
+        // Merge new cards into current set
+        setCards((currCards) => [...currCards, ...res.data.cards]);
       })
       .catch((err) => {
+        // No need to report our own cancellations
+        if (axios.isCancel(err)) return;
         setLoading(false);
-        setError(err);
+        setError(err.message);
       });
     // This is the effect's cleanup function which is using the axios cancelToken
     // to cancel the previous request when a new one is invoked.
     // https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
     return function cleanup() { cancel(); };
-  }, [name]);
+  }, [name, page]);
 
   return { cards, loading, error };
 }

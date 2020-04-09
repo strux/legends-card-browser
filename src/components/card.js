@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import './card.scss';
 
-export default function Card({ name, text, imageUrl }) {
+// eslint-disable-next-line arrow-body-style
+export default forwardRef(({ name, text, imageUrl }, ref) => {
   return (
-    <div className="card">
+    <div className="card" ref={ref}>
       <div className="fields">
         <h1>{name}</h1>
         <p>{text}</p>
@@ -13,4 +14,4 @@ export default function Card({ name, text, imageUrl }) {
       </div>
     </div>
   );
-}
+});
