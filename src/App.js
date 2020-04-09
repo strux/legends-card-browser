@@ -6,7 +6,9 @@ import Card from './components/card';
 function App() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-  const { cards, loading, error } = useCardAPI(query, page);
+  const {
+    cards, loading, error, hasMoreCards,
+  } = useCardAPI(query, page);
 
   // Let's keep track of this observer across renders with a ref
   const observer = useRef();
@@ -18,7 +20,7 @@ function App() {
     if (observer.current) observer.current.disconnect();
     // eslint-disable-next-line no-undef
     observer.current = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setPage(page + 1);
+      if (hasMoreCards && entry.isIntersecting) setPage(page + 1);
     }, { rootMargin: '0px 0px 10%' }); // Bottom margin buffer to load next page sooner
     observer.current.observe(el);
   }, [loading]);
@@ -37,7 +39,7 @@ function App() {
       <main className="cards">
         {cards.map((card, i) => (
           <Card
-            key={card.name}
+            key={card.id}
             name={card.name}
             text={card.text}
             imageUrl={card.imageUrl}

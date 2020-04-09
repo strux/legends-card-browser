@@ -5,6 +5,7 @@ export default function useCardAPI(name = '', page = 1, pageSize = 20) {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const [hasMoreCards, setHasMoreCards] = useState(true);
   let cancel;
 
   // If the card name changes, we need to clear the card set.
@@ -23,6 +24,8 @@ export default function useCardAPI(name = '', page = 1, pageSize = 20) {
         setLoading(false);
         // Merge new cards into current set
         setCards((currCards) => [...currCards, ...res.data.cards]);
+        // eslint-disable-next-line no-underscore-dangle
+        setHasMoreCards(res.data._totalCount > pageSize * page);
       })
       .catch((err) => {
         // No need to report our own cancellations
@@ -36,5 +39,7 @@ export default function useCardAPI(name = '', page = 1, pageSize = 20) {
     return function cleanup() { cancel(); };
   }, [name, page]);
 
-  return { cards, loading, error };
+  return {
+    cards, hasMoreCards, loading, error,
+  };
 }
