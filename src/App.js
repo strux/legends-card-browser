@@ -6,7 +6,7 @@ import Card from './components/card';
 function App() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-  const { cards } = useCardAPI(query, page);
+  const { cards, loading, error } = useCardAPI(query, page);
 
   const updateQuery = (e) => {
     setQuery(e.target.value);
@@ -27,6 +27,16 @@ function App() {
           />
         ))}
       </main>
+      { loading && (
+        <figure className="loading">
+          <figcaption>Loading...</figcaption>
+        </figure>
+      )}
+      { error && (
+        <figure className="error">
+          <figcaption>{error}</figcaption>
+        </figure>
+      )}
     </div>
   );
 }
