@@ -14,14 +14,12 @@ Mobile
 ## Running
 You will need `node` and `yarn` to run locally.
 
-`yarn start`
+### `yarn start`
 Runs the app in the development mode.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Building
-
-`yarn build`
+### `yarn build`
 
 Builds the app for production to the `build` folder.
 
@@ -32,3 +30,9 @@ The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## TODOs
+- Gracefully recover from network failures
+- Center CSS grid in viewport
+- Style error messaging and make more prominent
+
