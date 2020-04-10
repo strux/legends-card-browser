@@ -1,8 +1,64 @@
-.card {
-  height: 300px;
+@import '../scss/variables.scss';
 
-  .main-image {
-    width: 100px;
+.card {
+  flex: 0 1 calc(20% - #{$gutter-size});
+  @media (min-width: 1024px) and (max-width: 1300px) {
+    flex: 0 1 calc(25% - #{$gutter-size});
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    flex: 0 1 calc(33% - #{$gutter-size});
+  }
+  @media (min-width: 0px) and (max-width:767px) {
+    flex: 0 1 calc(50% - #{$gutter-size});
+  }
+  margin-bottom: $gutter-size;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  padding: 1em;
+  color: hsl(43,89%,93%);
+  background: $dark;
+  border-radius: 0.4em;
+  box-shadow: 0 0 10px 2px #fddddd;
+
+  h1 {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  .info {
+    .attributes {
+      margin-top: 1em;
+      dt, dd {
+        display: inline-block;
+      }
+
+      dt {
+        width: 30%;
+        opacity: 0.9;
+      }
+
+      dd {
+        width: 70%;
+        font-weight: 600;
+      }
+    }
+
+    p {
+      margin-top: 1em;
+      font-size: 0.9em;
+  }
+  }
+
+  .image-wrapper {
+    align-self: center;
+    height: 18em;
+    display: flex;
+    .image {
+      height: 100%;
+      width: auto;
+      align-self: center;
+    }
   }
 }
-

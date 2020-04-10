@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <input type="text" className="search-field" onChange={updateQuery} />
+        <input type="text" className="search-field" onChange={updateQuery} placeholder="Type name to search" />
       </header>
       <main className="cards">
         {cards.map((card, i) => (
@@ -42,6 +42,8 @@ function App() {
             key={card.id}
             name={card.name}
             text={card.text}
+            setName={card.set.name}
+            type={card.type}
             imageUrl={card.imageUrl}
             ref={(i === cards.length - 1) ? lastCardRef : null}
           />
