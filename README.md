@@ -14,6 +14,9 @@ Mobile
 ## Running
 You will need `node` and `yarn` to run locally.
 
+### `yarn install`
+Install all dependencies.
+
 ### `yarn start`
 Runs the app in the development mode.
 
