@@ -5,15 +5,13 @@
   background: lighten($dark, 10);
 
   .header {
-    display: flex;
-    align-items: center;
     position: fixed;
     width: 100%;
     height: $header-height;
 
     input {
-      width: 20em;
-      margin: 1em auto;
+      width: 18em;
+      margin: 1em 2em;
       padding: 0.25em;
       font-size: 1em;
       color: $light;
@@ -27,6 +25,6 @@
     padding: calc(#{$header-height} + 0.5em) 2em 2em;
     display: grid;
     gap: 2em;
-    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(14em, 18em));
   }
 }

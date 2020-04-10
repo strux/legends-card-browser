@@ -1,5 +1,11 @@
 @import '../scss/variables.scss';
 
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px 2px $light; }
+    50% { box-shadow: 0 0 10px 10px $light; }
+    100% { box-shadow: 0 0 10px 2px $light; }
+}
+
 .card {
   display: flex;
   flex-direction: column-reverse;
@@ -9,6 +15,7 @@
   background: $dark;
   border-radius: 0.4em;
   box-shadow: 0 0 10px 2px $light;
+  animation: pulse 1s 1;
 
   h1 {
     font-size: 1.2em;
@@ -50,12 +57,6 @@
       width: auto;
       align-self: center;
     }
-  }
-
-  @keyframes pulse {
-      0% { box-shadow: 0 0 10px 2px $light; }
-      50% { box-shadow: 0 0 10px 10px $light; }
-      100% { box-shadow: 0 0 10px 2px $light; }
   }
 
   &.loading {
