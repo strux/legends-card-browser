@@ -1,17 +1,6 @@
 @import '../scss/variables.scss';
 
 .card {
-  flex: 0 1 calc(20% - #{$gutter-size});
-  @media (min-width: 1024px) and (max-width: 1300px) {
-    flex: 0 1 calc(25% - #{$gutter-size});
-  }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    flex: 0 1 calc(33% - #{$gutter-size});
-  }
-  @media (min-width: 0px) and (max-width:767px) {
-    flex: 0 1 calc(50% - #{$gutter-size});
-  }
-  margin-bottom: $gutter-size;
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;

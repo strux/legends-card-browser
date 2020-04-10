@@ -24,9 +24,9 @@
   }
 
   .cards {
-    padding-top: calc(#{$header-height} + 0.5em);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    padding: calc(#{$header-height} + 0.5em) 2em 2em;
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
   }
 }
