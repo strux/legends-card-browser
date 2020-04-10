@@ -16,7 +16,7 @@ function App() {
   // an IntersectionObserver and tear down the previous one.
   // We'll use the intersection test to fire the next API request.
   const lastCardRef = useCallback((el) => {
-    if (loading || !el) return;
+    if (loading || error || !el) return;
     if (observer.current) observer.current.disconnect();
     // eslint-disable-next-line no-undef
     observer.current = new IntersectionObserver(([entry]) => {
@@ -48,12 +48,17 @@ function App() {
             ref={(i === cards.length - 1) ? lastCardRef : null}
           />
         ))}
+        { loading && (
+          <Card
+            key="loading"
+            name="Loading"
+            text="Loading some new cards for you now.  Please hold."
+            setName="Loading"
+            type="Loading"
+            imageUrl="https://images.elderscrollslegends.io/cs/reachman_shaman.png"
+          />
+        )}
       </main>
-      { loading && (
-        <figure className="loading">
-          <figcaption>Loading...</figcaption>
-        </figure>
-      )}
       { error && (
         <figure className="error">
           <figcaption>{error}</figcaption>

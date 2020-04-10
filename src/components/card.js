@@ -4,7 +4,7 @@ import './card.scss';
 export default forwardRef(({
   name, text, setName, type, imageUrl,
 }, ref) => (
-  <div className="card" ref={ref}>
+  <div className={`card${name === 'Loading' ? ' loading' : ''}`} ref={ref}>
     <div className="info">
       <dl className="attributes">
         <dt>Set:</dt>
@@ -12,7 +12,7 @@ export default forwardRef(({
         <dt>Type:</dt>
         <dd>{type}</dd>
       </dl>
-      <p>{text}</p>
+      <p className="text">{text}</p>
     </div>
     <div className="image-wrapper">
       <img className="image" src={imageUrl} alt={`${name} playing card`} />

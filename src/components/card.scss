@@ -61,4 +61,10 @@
       align-self: center;
     }
   }
+
+  &.loading {
+    .image, .attributes, .text {
+      filter: blur(4px);
+    }
+  }
 }
