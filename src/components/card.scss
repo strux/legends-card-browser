@@ -16,10 +16,10 @@
   flex-direction: column-reverse;
   justify-content: flex-end;
   padding: 1em;
-  color: hsl(43,89%,93%);
+  color: $light;
   background: $dark;
   border-radius: 0.4em;
-  box-shadow: 0 0 10px 2px #fddddd;
+  box-shadow: 0 0 10px 2px $light;
 
   h1 {
     font-size: 1.2em;
@@ -36,7 +36,8 @@
 
       dt {
         width: 30%;
-        opacity: 0.9;
+        opacity: 0.7;
+        font-size: 0.9em;
       }
 
       dd {
