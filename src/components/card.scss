@@ -63,7 +63,14 @@
     }
   }
 
+  @keyframes pulse {
+      0% { box-shadow: 0 0 10px 2px $light; }
+      50% { box-shadow: 0 0 10px 10px $light; }
+      100% { box-shadow: 0 0 10px 2px $light; }
+  }
+
   &.loading {
+    animation: pulse 1s infinite;
     .image, .attributes, .text {
       filter: blur(4px);
     }
